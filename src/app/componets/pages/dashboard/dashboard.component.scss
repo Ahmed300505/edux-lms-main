@@ -1,0 +1,107 @@
+i{
+    color:black  !important;
+}
+ /* Styling for Quick Links title */
+ .quick-links-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #343a40;
+  }
+  .quick-links-title::after {
+    content: ' *';
+    color: #6c757d;
+    font-size: 1.5rem;
+  }
+
+  /* Styling for cards */
+  .card-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  .badge {
+    font-size: 0.9rem;
+  }
+  .card-icon {
+    font-size: 2.5rem;
+    color: #6c757d;
+    margin-bottom: 10px;
+  }
+  .card-link {
+    color: #007bff;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .card-link:hover {
+    text-decoration: underline;
+  }
+  .arrow-icon {
+    margin-left: 5px;
+  }
+  .btn-primary{
+    background-color: black !important;
+  }
+  .custom-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-header-icon {
+    font-size: 1.8rem;
+    color: #ffcc00;
+    margin-right: 10px;
+  }
+
+  .session-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #343a40;
+  }
+
+  .session-text {
+    font-size: 1rem;
+    color: #6c757d;
+  }
+
+  .badge-recurring {
+    background-color: #ffc107;
+    color: #343a40;
+  }
+
+  .timer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+
+  .timer-item {
+    text-align: center;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    padding: 10px;
+    border-radius: 5px;
+    width: 60px;
+  }
+
+  .timer-item span {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #343a40;
+  }
+
+  .timer-item small {
+    font-size: 0.9rem;
+    color: #6c757d;
+  }
+
+  .equal-height {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .image-section img {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 15px;
+  }

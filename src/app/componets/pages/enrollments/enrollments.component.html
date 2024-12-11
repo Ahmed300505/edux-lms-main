@@ -1,0 +1,138 @@
+<!-- Page Header -->
+<div class="my-4 page-header-breadcrumb d-flex align-items-center justify-content-between flex-wrap gap-2">
+  <div>
+      <h1 class="page-title fw-medium fs-18 mb-2">Students</h1>
+      <div class="">
+          <nav>
+              <ol class="breadcrumb mb-0">
+                  <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Students</li>
+              </ol>
+          </nav>
+      </div>
+  </div>
+ 
+</div>
+  <div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-4">
+      <!-- Card Header -->
+      <div class="card-header bg-gradient-danger text-white d-flex justify-content-between align-items-center rounded-top">
+        <h4 class="mb-0">Students Management</h4>
+        <button
+          class="btn btn-light text-danger fw-bold d-inline-flex align-items-center px-4 rounded-pill"
+          [routerLink]="'/add-student'"
+        >
+          <i class="pi pi-plus-circle me-2"></i> Add New Student
+        </button>
+      </div>
+  
+      <!-- Card Body -->
+      <div class="card-body bg-light px-4 py-4">
+        <!-- PrimeNG Table -->
+       
+              <div class="card-body">
+                <div class="mat-elevation-z8">
+                  <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="text-secondary fw-bold">Search and Manage Students</h5>
+                    <span class="p-input-icon-left" style="width: 40%;">
+                      <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Search students...</mat-label>
+                        <input
+  matInput
+  #input
+  (keyup)="applyFilter(input.value)"
+  placeholder="Search students..."
+/>
+
+                      </mat-form-field>
+                    </span>
+                  </div>
+        
+                  <div class="table-responsive">
+                    <table mat-table [dataSource]="dataSource" matSort>
+        
+                      <!-- Student Number Column -->
+                      <ng-container matColumnDef="studentNumber">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Student Number</th>
+                        <td mat-cell *matCellDef="let student"> {{ student.studentNumber }} </td>
+                      </ng-container>
+        
+                      <!-- Name Column -->
+                      <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+                        <td mat-cell *matCellDef="let student">
+                          {{ student.firstName }} {{ student.lastName }}
+                        </td>
+                      </ng-container>
+        
+                      <!-- Date of Birth Column -->
+                      <ng-container matColumnDef="dateOfBirth">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date of Birth</th>
+                        <td mat-cell *matCellDef="let student">
+                          {{ student.dateOfBirth | date: 'dd/MM/yyyy' }}
+                        </td>
+                      </ng-container>
+        
+                      <!-- Email Column -->
+                      <ng-container matColumnDef="email">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+                        <td mat-cell *matCellDef="let student"> {{ student.emailAddress }} </td>
+                      </ng-container>
+        
+                      <!-- Status Column -->
+                      <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef>Status</th>
+                        <td mat-cell *matCellDef="let student">
+                          <span
+                            class="badge rounded-pill"
+                            [ngClass]="{
+                              'bg-success text-white': student.isActive,
+                              'bg-danger text-white': !student.isActive
+                            }"
+                          >
+                            {{ student.isActive ? 'Active' : 'Inactive' }}
+                          </span>
+                        </td>
+                      </ng-container>
+        
+                      <!-- Actions Column -->
+                      <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef>Actions</th>
+                        <td mat-cell *matCellDef="let student">
+                          <button
+                            mat-button
+                            color="warn"
+                            class="btn-sm"
+                            [routerLink]="['/edit-student-form', student.studentID]"
+                          >
+                            <mat-icon>edit</mat-icon> Edit
+                          </button>
+                          <button
+                            mat-button
+                            color="warn"
+                            class="btn-sm"
+                            (click)="confirmDelete(student)"
+                          >
+                            <mat-icon>delete</mat-icon> Delete
+                          </button>
+                        </td>
+                      </ng-container>
+        
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                  </div>
+        
+                  <mat-paginator
+                    [pageSizeOptions]="[5, 10, 20]"
+                    showFirstLastButtons
+                    aria-label="Select page of students"
+                  ></mat-paginator> 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+     
+  <br><br><br>

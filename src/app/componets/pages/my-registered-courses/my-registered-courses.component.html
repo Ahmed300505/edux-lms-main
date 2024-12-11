@@ -1,0 +1,61 @@
+<!-- Page Header -->
+<div class="my-4 page-header-breadcrumb d-flex align-items-center justify-content-between flex-wrap gap-2">
+    <div>
+        <h1 class="page-title fw-medium fs-18 mb-2">My Registered Courses</h1>
+        <div class="">
+            <nav>
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">My Registered Courses</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+   
+  </div>
+
+<div class="container mt-5">
+    <!-- Loader -->
+    <div *ngIf="registeredCourses.length === 0 && !loadingComplete" class="d-flex justify-content-center align-items-center flex-column my-5">
+        <div class="custom-loader mb-3"></div>
+        <p class="text-muted">Fetching your registered courses...</p>
+    </div>
+
+    <!-- No Courses Found -->
+    <div *ngIf="registeredCourses.length === 0 && loadingComplete" class="text-center my-5">
+        <img src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" alt="No courses" class="img-fluid mb-3" style="max-width: 180px;" />
+        <h2 class="text-muted">No Courses Found</h2>
+        <p class="text-secondary">You haven't registered for any courses yet.</p>
+        <a href="/courses" class="btn btn-lg btn-danger mt-4">Browse Courses</a>
+    </div>
+
+    <!-- Registered Courses List -->
+    <div *ngIf="registeredCourses.length > 0" class="mt-4">
+        <h2 class="text-center fw-bold text-danger mb-5">My Registered Courses</h2>
+        <div class="row g-4">
+            <div *ngFor="let course of registeredCourses; let i = index" class="col-md-6 col-lg-4">
+                <div class="card course-card shadow-sm border-0">
+                    <!-- Poster Image -->
+                    <img
+                    [src]="courseImages[i % courseImages.length]"
+                    alt="Course Poster"
+                    class="card-img-top poster-img"
+                />
+                    <div class="card-body">
+                        <h5 class="card-title text-danger fw-bold mb-2">{{ course.courseName }}</h5>
+                        <p class="card-text text-muted">
+                            <strong>Course ID:</strong> {{ course.courseId }} <br />
+                            <strong>Username:</strong> {{ course.username }} <br />
+                            <strong>Registration Date:</strong> {{ course.registrationDate | date: 'medium' }}
+                        </p>
+                        <a href="#" class="btn btn-danger btn-block w-100 mt-3">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>

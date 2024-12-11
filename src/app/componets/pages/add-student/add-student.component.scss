@@ -1,0 +1,37 @@
+.toast-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1050;
+  }
+  
+  .toast {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    background-color: #28a745;
+    color: white;
+    border-radius: 0.25rem;
+    animation: fadeInOut 3s ease-in-out;
+  }
+  
+  .toast-body {
+    flex-grow: 1;
+  }
+  
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    10%,
+    90% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+  

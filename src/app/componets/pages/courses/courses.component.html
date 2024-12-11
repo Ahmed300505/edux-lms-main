@@ -1,0 +1,116 @@
+<!-- Page Header -->
+<div class="my-4 page-header-breadcrumb d-flex align-items-center justify-content-between flex-wrap gap-2">
+  <div>
+      <h1 class="page-title fw-medium fs-18 mb-2">Courses</h1>
+      <div class="">
+          <nav>
+              <ol class="breadcrumb mb-0">
+                  <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Courseslist</li>
+              </ol>
+          </nav>
+      </div>
+  </div>
+ 
+</div>
+<div class="container mt-5">
+  <div class="card shadow-lg border-0 rounded-4">
+    <!-- Card Header -->
+    <div class="card-header bg-gradient-danger text-white d-flex justify-content-between align-items-left rounded-top">
+      <h4 class="mb-0">Courses Management</h4>
+      <button
+        class="btn btn-light text-danger fw-bold d-inline-flex align-items-center px-4 rounded-pill"
+        [routerLink]="'/add-course'"
+      >
+        <i class="pi pi-plus-circle me-2"></i> Add New Course
+      </button>
+    </div>
+
+    <!-- Card Body -->
+    <div class="card-body bg-light px-4 py-4">
+      <!-- PrimeNG Table -->
+      <p-table
+        #dt
+        [value]="courses"
+        [paginator]="true"
+        [rows]="5"
+        [rowsPerPageOptions]="[5, 10, 20]"
+        [globalFilterFields]="['courseName', 'courseCode', 'creditHours']"
+        [resizableColumns]="true"
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        responsiveLayout="scroll"
+        class="custom-table"
+      >
+        <!-- Search Filter -->
+        <ng-template pTemplate="caption">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h5 class="text-secondary fw-bold">Search and Manage Courses</h5>
+            <span class="p-input-icon-left" style="width: 40%;">
+              <i class="pi pi-search text-muted"></i>
+              <input
+                type="text"
+                pInputText
+                placeholder="Search courses..."
+                class="form-control shadow-sm rounded-pill"
+                [(ngModel)]="globalFilterValue"
+                (ngModelChange)="dt.filterGlobal($event, 'contains')"
+              />
+            </span>
+          </div>
+        </ng-template>
+
+        <!-- Table Header -->
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="courseName" class="text-center">
+              Course Name
+              <p-sortIcon field="courseName"></p-sortIcon>
+            </th>
+            <th pSortableColumn="courseCode" class="text-center">
+              Course Code
+              <p-sortIcon field="courseCode"></p-sortIcon>
+            </th>
+            <th pSortableColumn="creditHours" class="text-center">
+              Credit Hours
+              <p-sortIcon field="creditHours"></p-sortIcon>
+            </th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </ng-template>
+
+        <!-- Table Body -->
+        <ng-template pTemplate="body" let-course>
+          <tr>
+            <td class="text-center fw-semibold">{{ course.courseName }}</td>
+            <td class="text-center">{{ course.courseCode }}</td>
+            <td class="text-center">{{ course.creditHours }}</td>
+            <td class="text-center">
+              <button
+                class="btn btn-outline-warning btn-sm me-2 rounded-pill"
+                [routerLink]="['/edit-course', course.courseID]"
+              >
+                <i class="pi pi-pencil"></i> Edit
+              </button>
+              <button
+                class="btn btn-outline-danger btn-sm rounded-pill"
+                (click)="confirmDelete(course)"
+              >
+                <i class="pi pi-trash"></i> Delete
+              </button>
+            </td>
+          </tr>
+        </ng-template>
+
+        <!-- Empty Message -->
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="4" class="text-center text-secondary py-4">
+              <i class="pi pi-info-circle"></i> No courses found. Please add new courses.
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

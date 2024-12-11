@@ -1,0 +1,24 @@
+<div class="program-container">
+    <h1>Programs</h1>
+    <div class="form-section">
+      <input
+        type="text"
+        [(ngModel)]="newProgram.programName"
+        placeholder="Enter Program Name"
+        class="input-field"
+      />
+      <button (click)="addProgram()" class="add-btn">Add Program</button>
+    </div>
+    <ul class="program-list">
+      <li *ngFor="let program of batch" class="program-item">
+        {{ program.programName }}
+        <button
+          (click)="deleteProgram(program.programId!)"
+          class="delete-btn"
+        >
+          Delete
+        </button>
+      </li>
+    </ul>
+  </div>
+  

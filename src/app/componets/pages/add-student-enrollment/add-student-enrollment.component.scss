@@ -1,0 +1,103 @@
+.form-row {
+    display: flex;
+    gap: 20px; /* Space between columns */
+    margin-bottom: 15px;
+  }
+  
+  .form-column {
+    flex: 1; /* Each column takes up equal space */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #b71c1c;
+  }
+  
+  input, select {
+    padding: 10px;
+    border: 1px solid #b71c1c;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  button.submit-btn {
+    width: 100%;
+    background-color: #b71c1c;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button.submit-btn:hover {
+    background-color: #d32f2f;
+  }
+  /* General layout for form rows */
+  .form-row {
+    display: flex;
+    gap: 20px; /* Space between columns */
+    margin-bottom: 15px;
+  }
+  
+  .form-column {
+    flex: 1; /* Each column takes up equal space */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Label styling */
+  label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #b71c1c; /* Red color for labels */
+    font-size: 16px;
+  }
+  
+  /* Input and select field styling */
+  input, select {
+    padding: 12px;
+    border: 1px solid #b71c1c;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Focus state for inputs and selects */
+  input:focus, select:focus {
+    border-color: #d32f2f;
+    box-shadow: 0 0 8px rgba(211, 47, 47, 0.3);
+    outline: none;
+  }
+  
+  /* Disabled options styling */
+  option:disabled {
+    background-color: #f0f0f0;
+    color: #888;
+  }
+  
+  /* Button styling */
+  button.submit-btn {
+    width: 100%;
+    background-color: #b71c1c;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button.submit-btn:hover {
+    background-color: #d32f2f;
+  }
+  
+  button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  

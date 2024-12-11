@@ -1,0 +1,158 @@
+<div
+    class="page-title-area"
+    style="background-image: url(https://static.vecteezy.com/system/resources/thumbnails/000/693/768/small/digital-connecting-banner-technology-polygon-background.jpg);"
+>
+    <div class="page-title-overlay"></div>
+    <div class="container">
+        <div class="page-title-content">
+            <ul>
+                <li><a routerLink="/">Home</a></li>
+                <li>My Dashboard</li>
+            </ul>
+            <h2>My Dashboard</h2>
+        </div>
+    </div>
+</div>
+<div
+    class="my-dashboard-area ptb-100"
+    [class.dark-my-dashboard-area]="themeService.isDark()"
+>
+    <div class="container">
+        <div class="myDashboard-profile">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-5">
+                    <div class="profile-image">
+                        <img src="https://skillfactory-48afa.web.app/images/user1.jpg" alt="image">
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-7">
+                    <div class="profile-content">
+                        <h3>{{currentUser.username | uppercase}}</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore atque officiis maxime suscipit expedita obcaecati nulla in ducimus.</p>
+                        <ul class="contact-info" style="margin-left: -25px;">
+                           <ul class="contact-info">
+                                <li><i class="bi bi-envelope-at-fill"></i> <a href="mailto:hello&#64;jamesanderson.com">{{currentUser.email}}</a></li>
+                                <li><i class="bi bi-telephone-fill"></i> <a href="tel:+502464674">+502 464 674</a></li>
+                                <li><i class="bi bi-globe-americas"></i> <a href="#" target="_blank">www.jamesanderson.com</a></li>
+                            </ul>
+                        </ul>
+                        <ul class="social">
+                            <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-facebook'></i></a></li>
+                            <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-twitter'></i></a></li>
+                            <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-instagram'></i></a></li>
+                            <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-linkedin'></i></a></li>
+                            <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-pinterest-alt'></i></a></li>
+                        </ul>
+                        <a routerLink="/"  (click)="logout()" class="myDashboard-logout">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar">
+            <button class="nav-button active" (click)="changeTab('home')">Home</button>
+            <button class="nav-button" (click)="changeTab('about')">About</button>
+            <button class="nav-button" (click)="changeTab('services')">Services</button>
+            <button class="nav-button" (click)="changeTab('contact')">Contact</button>
+            <button class="nav-button" (click)="changeTab2('courses')">Courses</button>
+        </nav>
+            <div id="content">Welcome to the Home Page! <b>{{currentUser.username | uppercase}}</b> </div>
+            <div *ngIf="currentTab === 'courses'">
+                <h3>Available Courses</h3>
+                <div *ngFor="let group of groups" class="course-item">
+                    <div class="ticket-container">
+                            <div class="ticket-column logo">
+                                <img [src]="group.ImagePath"  alt="Logo" class="logo-img" *ngIf="group.ImagePath"/>
+                            </div>
+                            <div class="ticket-column content">
+                                <h2 class="heading">{{group.title}}</h2>
+                                <p>
+                                    {{group.description}}
+                                </p>
+                                <button class="icon-button" [routerLink]="['/admin-groups', group.id]">
+                                    <span class="icon"><i class="bi bi-rocket-takeoff"></i></span>  <!-- Example icon -->
+                                    Join Now
+                                </button>
+                            </div>
+                            <div class="ticket-column image-column">
+                                <div class="image-container" [ngStyle]="{'background-image': 'url(' + group.ImagePath + ')'}">
+                                    <div class="image-content">
+                                      
+                                        <p>{{group.detailPanel}}
+                                        </p>
+                                        <a href="" style="color: white;">Purchase Now</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="" style="color: white;">Request Information</a>
+                                    </div>
+                                    <ul style="line-height: 30px;">
+                                        <li><b>Members:</b>1254</li>
+                                        <li><b>Last Post:</b>12/10/2024</li>
+                                        <li><b>Frequency:</b>Occasional</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+        <div class="myDashboard-content">
+            <p>From your account dashboard you can view your <a routerLink="/orders">recent orders</a>, manage your <a routerLink="/edit-address">shipping and billing addresses</a>, <a routerLink="/edit-account">edit your password</a>, and <a routerLink="/edit-account">account details</a>.</p>
+            <h3>Recent Orders</h3>
+            <div class="recent-orders-table table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Order</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Total</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#074145O5</td>
+                            <td>October 18, 2024</td>
+                            <td>Completed</td>
+                            <td>$49.00 for 1 item</td>
+                            <td><a routerLink="/single-course" class="view-button">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>#074145O6</td>
+                            <td>October 18, 2024</td>
+                            <td>On Hold</td>
+                            <td>$49.00 for 1 item</td>
+                            <td><a routerLink="/single-course" class="view-button">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>#074145O7</td>
+                            <td>October 18, 2024</td>
+                            <td>Completed</td>
+                            <td>$49.00 for 1 item</td>
+                            <td><a routerLink="/single-course" class="view-button">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>#074145O5</td>
+                            <td>October 18, 2024</td>
+                            <td>Completed</td>
+                            <td>$49.00 for 1 item</td>
+                            <td><a routerLink="/single-course" class="view-button">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>#074145O6</td>
+                            <td>October 18, 2024</td>
+                            <td>On Hold</td>
+                            <td>$49.00 for 1 item</td>
+                            <td><a routerLink="/single-course" class="view-button">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>#074145O7</td>
+                            <td>October 18, 2024</td>
+                            <td>Completed</td>
+                            <td>$49.00 for 1 item</td>
+                            <td><a routerLink="/single-course" class="view-button">View</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>

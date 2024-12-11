@@ -1,0 +1,121 @@
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
+<!-- Page Header -->
+<div class="my-4 page-header-breadcrumb d-flex align-items-center justify-content-between flex-wrap gap-2">
+  <div>
+      <h1 class="page-title fw-medium fs-18 mb-2">Courses</h1>
+      <div class="">
+          <nav>
+              <ol class="breadcrumb mb-0">
+                  <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Add-Course</li>
+              </ol>
+          </nav>
+      </div>
+  </div>
+ 
+</div>
+<div class="container my-5">
+  <h2 class="text-left mb-4">Course Management</h2>
+
+  <!-- Toast Container -->
+  <div class="toast-container position-fixed top-0 end-0 p-3">
+    <div
+      *ngFor="let toast of toasts"
+      class="toast show align-items-center text-bg-success border-0 mb-2"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+    >
+      <div class="d-flex">
+        <div class="toast-body">
+          {{ toast.message }}
+        </div>
+        <button
+          type="button"
+          class="btn-close btn-close-white me-2 m-auto"
+          (click)="removeToast(toast)"
+          aria-label="Close"
+        ></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Form for Adding/Editing Student -->
+  <div class="card shadow mb-4">
+    <div class="card-header bg-danger text-white">
+      <h5 class="mb-0">{{ isEditing ? 'Edit Course' : 'Add New Course' }}</h5>
+    </div>
+    <div class="card-body">
+      <form
+        (ngSubmit)="addOrEditCourse()"
+        #CourseForm="ngForm"
+        class="row g-3 needs-validation"
+        novalidate
+      >
+        <!-- Student Number -->
+        <div class="col-md-6">
+          <label class="form-label">Course Name:</label>
+          <input
+            type="text"
+            [(ngModel)]="newCourse.CourseName"
+            name="CourseName"
+            #CourseName="ngModel"
+            class="form-control"
+            required
+            minlength="5"
+            maxlength="10"
+          />
+          <div *ngIf="CourseName.invalid && CourseName.touched" class="text-danger">
+            <small *ngIf="CourseName.errors?.['required']">Course Name is required.</small>
+            <small *ngIf="CourseName.errors?.['minlength']">Minimum 5 characters required.</small>
+            <small *ngIf="CourseName.errors?.['maxlength']">Maximum 10 characters allowed.</small>
+          </div>
+        </div>
+
+        <!-- First Name -->
+        <div class="col-md-6">
+          <label class="form-label">Course Code:</label>
+          <input
+            type="text"
+            [(ngModel)]="newCourse.CourseCode"
+            name="CourseCode"
+            #CourseCode="ngModel"
+            class="form-control"
+            required
+          />
+          <div *ngIf="CourseCode.invalid && CourseCode.touched" class="text-danger">
+            <small *ngIf="CourseCode.errors?.['required']">Course Code is required.</small>
+          </div>
+        </div>
+
+        <!-- Middle Name -->
+        <div class="col-md-6">
+          <label class="form-label">Credit Hours:</label>
+          <input
+            type="text"
+            [(ngModel)]="newCourse.CreditHours"
+            name="CreditHours"
+            class="form-control"
+          />
+        </div>
+
+       
+
+        <!-- Date of Birth -->
+
+
+        <!-- Submit and Cancel Buttons -->
+        <div class="col-12 text-end">
+          <button type="submit" class="btn btn-success me-2" [disabled]="CourseForm.invalid">
+            {{ isEditing ? 'Update' : 'Add' }} Course
+          </button>
+          <button type="button" class="btn btn-danger" (click)="resetForm()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

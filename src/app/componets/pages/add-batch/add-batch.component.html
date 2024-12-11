@@ -1,0 +1,18 @@
+<div>
+    <h1>Batches</h1>
+    <div>
+      <input
+        type="text"
+        [(ngModel)]="newBatch.batchName"
+        placeholder="Enter Batch "
+      />
+      <button (click)="createBatch()">Add Batch</button>
+    </div>
+    <ul>
+      <li *ngFor="let program of programs">
+        {{ program.batchName }}
+        <button (click)="deleteBatch(program.BatchId!)">Delete</button>
+      </li>
+    </ul>
+  </div>
+  

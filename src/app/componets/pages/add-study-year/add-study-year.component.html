@@ -1,0 +1,18 @@
+<div>
+    <h1>Programs</h1>
+    <div>
+      <input
+        type="text"
+        [(ngModel)]="newProgram.studyYears"
+        placeholder="Enter Study Year"
+      />
+      <button (click)="createStudyYear()">Add Study Year</button>
+    </div>
+    <ul>
+      <li *ngFor="let program of studyYear">
+        {{ program.studyYears }}
+        <button (click)="deleteProgram(program.StudyYearId!)">Delete</button>
+      </li>
+    </ul>
+  </div>
+  

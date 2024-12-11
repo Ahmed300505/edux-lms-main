@@ -1,0 +1,82 @@
+<nav>
+  <div>
+    Welcome, {{ currentUser.username }}!
+     {{ currentUser.email }}!
+  </div>
+</nav>
+
+
+
+
+<div class="container">
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" class="form-container">
+      <h2>Student Registration</h2>
+  
+      <div class="form-row">
+        <div class="form-column">
+          <label for="studentNumber">Student Number:</label>
+          <input id="studentNumber" type="text"  />
+        </div>
+        <div class="form-column">
+          <label for="firstName">First Name:</label>
+          <input id="firstName" type="text"  />
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-column">
+          <label for="middleName">Middle Name:</label>
+          <input id="middleName" type="text"  />
+        </div>
+        <div class="form-column">
+          <label for="lastName">Last Name:</label>
+          <input id="lastName" type="text"  />
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-column">
+          <label for="dateOfBirth">Date of Birth:</label>
+          <input id="dateOfBirth" type="date"  />
+        </div>
+        <div class="form-column">
+          <label for="emailAddress">Email Address:</label>
+          <input id="emailAddress" type="email"  />
+        </div>
+    </div>
+    
+    <div class="form-row">
+        <div class="form-column">
+            <label for="programID">Program:</label>
+            <select id="programID" formControlName="programID">
+              <option *ngFor="let program of programs" [value]="program.programId" [disabled]="isProgramDisabled(program.programId)">
+                {{ program.programName }}
+              </option>
+          </select>
+        </div>
+        <div class="form-column">
+          <label for="batchID">Batch:</label>
+          <select id="batchID" formControlName="batchID">
+            <option value="">Enter Batch</option>
+            <option *ngFor="let batch of batches" [value]="batch.batchID" [disabled]="isBatchDisabled(batch.batchID)">
+              {{ batch.batchName }}
+            </option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-column">
+          <label for="studyYearID">Study Year:</label>
+          <select id="studyYearID" formControlName="studyYearID">
+            <option value="">Enter Study Year</option>
+            <option *ngFor="let year of studyYears" [value]="year.studyYearID" [disabled]="isStudyYearDisabled(year.studyYearID)">
+              {{ year.studyYears }}
+            </option>
+          </select>
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="studentForm.invalid" class="submit-btn">Register</button>
+    </form>
+  </div>
